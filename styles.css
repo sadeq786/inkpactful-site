@@ -144,12 +144,12 @@ hr {
 
 .eyebrow {
   font-family: var(--sans);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 1rem;
+  margin: 0 0 1.1rem;
 }
 .section--dark .eyebrow { color: #8fc0b5; }
 
@@ -327,9 +327,9 @@ hr {
   overflow: hidden;
 }
 
-.hero__inner { max-width: 940px; }
+.hero__inner { max-width: var(--wide); }
 
-.hero h1 { margin-bottom: 0.45em; }
+.hero h1 { margin-bottom: 0.45em; max-width: 17ch; }
 
 .hero .lede { max-width: 60ch; }
 
@@ -742,6 +742,13 @@ hr {
   background: rgba(169, 207, 198, 0.14);
   border-left-color: #8fc0b5;
   color: #e8e4dc;
+}
+
+/* Inline credit emphasis — bold italic in the heading colour */
+.credit-strong {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink);
 }
 
 /* Small italic footnote at the base of each package row */
