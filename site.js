@@ -14,7 +14,7 @@ const INKPACTFUL = {
      walkthrough here. Those stay unlisted and are sent privately after payment.
      Example: "https://tidycal.com/inkpactful/fit-call"
      Leave as null until the link is live — the page shows a graceful fallback. */
-  bookingUrl: null,
+  bookingUrl: "https://tidycal.com/m8n0892/fitcall",
 
   /* TidyCal link for the 90-MINUTE IMPACT LENS session.
      Used by the "Book Your Impact Lens" buttons on How We Work.
@@ -22,7 +22,7 @@ const INKPACTFUL = {
      NOTE: this link lets someone book a 90-minute slot without a fit call and
      without paying. Keep the TidyCal event's availability tight, or remove the
      buttons, if that becomes a problem. */
-  lensBookingUrl: null,
+  lensBookingUrl: "https://tidycal.com/m8n0892/impactlens",
 
   /* Public contact address. */
   contactEmail: "info@inkpactful.com",
@@ -99,18 +99,28 @@ const INKPACTFUL = {
       });
 
     /* ---- Booking embed --------------------------------------------------- */
+    // TidyCal is embedded with its own JS widget (a div + their embed.js),
+    // not a plain iframe src. See: https://help.tidycal.com/article/141-embeding-tidycal-on-your-site
     var embed = document.getElementById("booking-embed");
-    if (embed) {
-      if (INKPACTFUL.bookingUrl) {
-        var frame = document.createElement("iframe");
-        frame.src = INKPACTFUL.bookingUrl;
-        frame.title = "Book a 15-minute fit call with Inkpactful";
-        frame.setAttribute("loading", "lazy");
-        embed.innerHTML = "";
-        embed.appendChild(frame);
+    if (embed && INKPACTFUL.bookingUrl) {
+      var tidyCalPath = INKPACTFUL.bookingUrl
+        .replace(/^https?:\/\/(www\.)?tidycal\.com\//i, "")
+        .replace(/\/$/, "");
+
+      var widget = document.createElement("div");
+      widget.className = "tidycal-embed";
+      widget.setAttribute("data-path", tidyCalPath);
+      embed.innerHTML = "";
+      embed.appendChild(widget);
+
+      if (!document.querySelector('script[src="https://tidycal.com/js/embed.js"]')) {
+        var script = document.createElement("script");
+        script.src = "https://tidycal.com/js/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
       }
-      // If bookingUrl is null, the fallback markup already in the HTML stays put.
     }
+    // If bookingUrl is null, the fallback markup already in the HTML stays put.
 
     /* ---- Impact Lens booking buttons -------------------------------------- */
     var lensLinks = document.querySelectorAll("[data-lens-booking]");
