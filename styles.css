@@ -561,17 +561,11 @@ hr {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 4 / 5;
+  object-fit: cover;
   background: var(--paper-alt);
   border: 1px solid var(--rule);
   border-radius: 3px;
-  display: grid;
-  place-items: center;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  text-align: center;
-  padding: 1rem;
+  display: block;
   margin-bottom: 1.25rem;
 }
 
