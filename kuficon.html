@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KufiCon Workbook — Inkpactful</title>
+<meta name="description" content="Get the What Convinces Them workbook from Tasmiha Khan's KufiCon 2026 session, sent straight to your inbox.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://inkpactful.com/kuficon">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Page-specific. Kept inline and light so it loads on one bar of conference signal. */
+  .kc { padding: 2rem 0 3rem; }
+  .kc .eyebrow { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: .75rem; }
+  .kc h1 { font-size: clamp(2rem, 7vw, 2.8rem); margin-bottom: .5rem; }
+  .kc .lede { margin-bottom: 1.75rem; }
+  .kc-form { display: grid; gap: 1rem; max-width: 30rem; }
+  .kc-form label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: .3rem; }
+  .kc-form input[type=text], .kc-form input[type=email] {
+    width: 100%; font: inherit; font-size: 1rem; /* 16px+ stops iPhone zoom-on-focus */
+    padding: .8rem .9rem; border: 1px solid var(--rule); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  .kc-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  .kc-form .row2 { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 420px) { .kc-form .row2 { grid-template-columns: 1fr; } }
+  .kc-form .btn { width: 100%; justify-content: center; font-size: 1.05rem; padding-block: .95rem; }
+  .kc-form .btn[disabled] { opacity: .6; cursor: wait; }
+  .kc-err { color: #9b2c2c; font-size: .95rem; margin: 0; }
+  .kc-hp { position: absolute; left: -9999px; }
+  .kc-done { max-width: 34rem; }
+  .kc-done h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+  .kc-done .note { font-size: .95rem; color: var(--ink-muted); }
+  .kc-call { margin-top: 2.5rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper-alt); max-width: 34rem; }
+  .kc-call h3 { margin-bottom: .4rem; }
+  .kc-call p { font-size: 1rem; color: var(--ink-soft); }
+  .kc-call .btn { margin-top: 1rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="index.html">Inkpactful<span class="dot">.</span></a>
+  </div>
+</header>
+
+<main id="main" class="kc">
+  <div class="wrap wrap--narrow">
+
+    <!-- ============ FORM STATE ============ -->
+    <section id="kc-start">
+      <p class="eyebrow">KufiCon 2026 &middot; Tasmiha Khan</p>
+      <h1>Get the <em>What Convinces Them</em> workbook</h1>
+      <p class="lede">Tell us where to send it. It lands in your inbox in about a minute.</p>
+
+      <!-- Netlify Forms keeps a backup copy of every signup (Netlify dashboard → Forms → kuficon). -->
+      <form class="kc-form" id="kc-form" name="kuficon" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="kuficon">
+        <p class="kc-hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="row2">
+          <div>
+            <label for="kc-first">First name</label>
+            <input type="text" id="kc-first" name="firstName" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="kc-last">Last name</label>
+            <input type="text" id="kc-last" name="lastName" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="kc-email">Email</label>
+          <input type="email" id="kc-email" name="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required>
+        </div>
+
+        <div>
+          <label for="kc-org">Company or organization</label>
+          <input type="text" id="kc-org" name="organization" autocomplete="organization" required>
+        </div>
+
+        <div>
+          <label for="kc-role">What position best describes you?</label>
+          <input type="text" id="kc-role" name="position" autocomplete="organization-title" required>
+        </div>
+
+        <p class="kc-err" id="kc-err" role="alert" hidden></p>
+
+        <button class="btn btn--primary" type="submit" id="kc-submit">Send me the workbook</button>
+      </form>
+    </section>
+
+    <!-- ============ THANK-YOU STATE ============ -->
+    <section id="kc-done" class="kc-done" hidden tabindex="-1">
+      <p class="eyebrow">You're all set</p>
+      <h2>Check your inbox, <span id="kc-name">friend</span></h2>
+      <p>The workbook is on its way to <strong id="kc-sent-to"></strong>. Give it a minute or two.</p>
+      <p class="note">Not there? Check your Promotions or Spam folder, or email <a data-email href="mailto:info@inkpactful.com">info@inkpactful.com</a> and we'll send it directly.</p>
+    </section>
+
+    <!-- ============ FIT CALL (always visible) ============ -->
+    <aside class="kc-call">
+      <h3>Leading a nonprofit or impact organization?</h3>
+      <p>Book a free 15-minute fit call. We'll talk about the communication you're working on and whether we can help.</p>
+      <a class="btn btn--primary" href="book.html">Book a 15-minute fit call</a>
+    </aside>
+
+  </div>
+</main>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("kc-form");
+  var btn = document.getElementById("kc-submit");
+  var err = document.getElementById("kc-err");
+
+  function showError(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = "Send me the workbook"; }
+
+  function encode(data) {
+    return Object.keys(data).map(function (k) {
+      return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+    }).join("&");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.hidden = true;
+
+    var data = {};
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (el.name) data[el.name] = (el.value || "").trim();
+    });
+    if (data["bot-field"]) return;                       // bot
+    if (!data.firstName || !data.lastName || !data.organization || !data.position) {
+      return showError("Please fill in every field.");
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) {
+      return showError("That email doesn't look right. Mind checking it?");
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    // 1) The email delivery + Google Sheet log (Apps Script web app).
+    var scriptUrl = (typeof INKPACTFUL !== "undefined" && INKPACTFUL.kuficonScriptUrl) || "";
+    var sends = [];
+    if (scriptUrl) {
+      sends.push(fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",                                   // Apps Script doesn't send CORS headers; we fire and trust
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ firstName: data.firstName, lastName: data.lastName, email: data.email,
+                       organization: data.organization, position: data.position, source: "kuficon-2026" })
+      }));
+    }
+    // 2) Backup copy in Netlify Forms.
+    sends.push(fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(data)
+    }));
+
+    Promise.allSettled(sends).then(function (results) {
+      var anyOk = results.some(function (r) { return r.status === "fulfilled"; });
+      if (!anyOk) {
+        return showError("Couldn't connect. If your signal is weak, try again in a moment.");
+      }
+      document.getElementById("kc-name").textContent = data.firstName;
+      document.getElementById("kc-sent-to").textContent = data.email;
+      document.getElementById("kc-start").hidden = true;
+      var done = document.getElementById("kc-done");
+      done.hidden = false;
+      done.focus();
+      window.scrollTo(0, 0);
+    });
+  });
+})();
+</script>
+</body>
+</html>

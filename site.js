@@ -27,6 +27,12 @@ const INKPACTFUL = {
   /* Public contact address. */
   contactEmail: "info@inkpactful.com",
 
+  /* KufiCon workbook delivery: the Google Apps Script web app URL
+     (ends in /exec). The /kuficon form posts here; the script logs the
+     signup to a Google Sheet and emails the workbook. Leave null and the
+     form still saves signups to Netlify Forms, but sends no email. */
+  kuficonScriptUrl: null,
+
   /* Optional LinkedIn profiles for the founders. Leave null to hide. */
   linkedInShaikh: null,
   linkedInTasmiha: null

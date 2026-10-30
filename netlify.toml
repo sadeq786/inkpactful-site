@@ -27,6 +27,13 @@
   to = "/privacy.html"
   status = 200
 
+# KufiCon 2026 QR code target. The QR code is printed in the slides and
+# can't change, so keep this URL alive even after the event.
+[[redirects]]
+  from = "/kuficon"
+  to = "/kuficon.html"
+  status = 200
+
 # Short link you can say out loud at the 1KO
 [[redirects]]
   from = "/call"
