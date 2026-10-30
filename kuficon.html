@@ -12,10 +12,11 @@
 <style>
   /* Page-specific. Kept inline and light so it loads on one bar of conference signal. */
   .kc { padding: 2rem 0 3rem; }
+  .kc .wrap { max-width: calc(36rem + 2 * var(--gutter)); }  /* one centered column: heading, form, card all share its edges */
   .kc .eyebrow { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: .75rem; }
   .kc h1 { font-size: clamp(2rem, 7vw, 2.8rem); margin-bottom: .5rem; }
   .kc .lede { margin-bottom: 1.75rem; }
-  .kc-form { display: grid; gap: 1rem; max-width: 30rem; }
+  .kc-form { display: grid; gap: 1rem; }
   .kc-form label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: .3rem; }
   .kc-form input[type=text], .kc-form input[type=email] {
     width: 100%; font: inherit; font-size: 1rem; /* 16px+ stops iPhone zoom-on-focus */
@@ -28,10 +29,10 @@
   .kc-form .btn[disabled] { opacity: .6; cursor: wait; }
   .kc-err { color: #9b2c2c; font-size: .95rem; margin: 0; }
   .kc-hp { position: absolute; left: -9999px; }
-  .kc-done { max-width: 34rem; }
+  .kc-done { }
   .kc-done h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
   .kc-done .note { font-size: .95rem; color: var(--ink-muted); }
-  .kc-call { margin-top: 2.5rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper-alt); max-width: 34rem; }
+  .kc-call { margin-top: 2.5rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper-alt); }
   .kc-call h3 { margin-bottom: .4rem; }
   .kc-call p { font-size: 1rem; color: var(--ink-soft); }
   .kc-call .btn { margin-top: 1rem; }
