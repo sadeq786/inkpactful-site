@@ -31,7 +31,7 @@ const INKPACTFUL = {
      (ends in /exec). The /kuficon form posts here; the script logs the
      signup to a Google Sheet and emails the workbook. Leave null and the
      form still saves signups to Netlify Forms, but sends no email. */
-  kuficonScriptUrl: null,
+  kuficonScriptUrl: "https://script.google.com/macros/s/AKfycbx4VsYSgVl0eVD-dbAd_dD59ro1F2_kKu5R4TYYiA8QHoejSFwqAvZp2X6xECMi2p9G/exec",
 
   /* Optional LinkedIn profiles for the founders. Leave null to hide. */
   linkedInShaikh: null,
